@@ -55,11 +55,16 @@ public class IdentityConfiguration
                 new Client
                 {
                     ClientId = "cwm.client",
-                    ClientName = "Credencias de acesso",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedScopes = { "myApi.read" }
-                    
+                    ClientName = "Credencias de acesso",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RedirectUris = { "https://localhost:4200/callback" },
+                    PostLogoutRedirectUris = { "https://localhost:4200" },
+                    AllowedScopes = { "openid", "profile", "myApi.read" },
+                    AllowAccessTokensViaBrowser = true,
+
+
                 },
         };
 }
+ 
